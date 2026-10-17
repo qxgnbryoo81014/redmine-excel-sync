@@ -69,20 +69,14 @@ with st.sidebar:
     if not ai_ok:
         st.caption("未偵測到 Claude Code，AI 項目已停用")
 
-    chk_structure = st.checkbox("Excel 結構檢查", value=ai_ok, disabled=not ai_ok)
-    chk_diff = st.checkbox("異動合理性檢查", value=ai_ok, disabled=not ai_ok)
-    chk_quality = st.checkbox("Redmine 資料品質", disabled=not ai_ok)
-    chk_summary = st.checkbox("差異文件摘要", disabled=not ai_ok)
-    chk_teams = st.checkbox("Teams 通知")
+    chk_sync = st.checkbox("同步 Redmine 進 Excel", value=True)
+    chk_summary = st.checkbox("差異文件摘要", disabled=not (ai_ok and chk_sync))
+    chk_teams = st.checkbox("Teams 通知", disabled=not chk_sync)
 
     st.divider()
-    if st.button("開始更新", type="primary", width="stretch"):
-        flags = ["--stage", "check"]
-        if chk_structure: flags.append("--check-structure")
-        if chk_diff:      flags.append("--check-diff")
-        if chk_quality:   flags.append("--check-quality")
+    if st.button("開始更新", type="primary", width="stretch", disabled=not chk_sync):
         with st.spinner("從 Redmine 擷取並比對中..."):
-            ok, result, log = run_main(*flags)
+            ok, result, log = run_main("--stage", "check")
         ss.check = result if ok else None
         ss.files = []
         ss.log = log
