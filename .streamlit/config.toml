@@ -4,6 +4,7 @@ primaryColor = "#534AB7"
 
 [client]
 toolbarMode = "minimal"
+showErrorDetails = "none"
 
 [server]
 runOnSave = false
