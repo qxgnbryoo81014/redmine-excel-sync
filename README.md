@@ -15,20 +15,17 @@
 
 #### 0. 執行入口與環境
 
-- [ ] 建立 `start.bat`：切換至專案目錄、設定 UTF-8 編碼（`chcp 65001`）
-- [ ] 0.1 可攜式 Python
-  - [ ] 撰寫打包腳本（`scripts/build_portable.ps1`），下載 embeddable Python 並解壓至 `python/`
-  - [ ] 啟用 `site-packages`（修改 `python*._pth`）並安裝 pip
-  - [ ] 依 `requirements.txt` 安裝套件至可攜式環境，固定版本
-  - [ ] `start.bat` 優先使用 `python\python.exe`，找不到時退回系統 Python
-  - [ ] 確認 `python/` 是否納入版控或另行發布（`.gitignore` 設定）
+- [x] 建立 `start.bat`：切換至專案目錄、設定 UTF-8 編碼（`chcp 65001`）
+- [x] 0.1 可攜式 Python
+  - [x] 撰寫打包腳本（`scripts/build_portable.ps1`），下載 embeddable Python 並解壓至 `python/`
+  - [x] 啟用 `site-packages`（修改 `python*._pth`）並安裝 pip
+  - [x] 依 `requirements.txt` 安裝套件至可攜式環境，固定版本
+  - [x] `start.bat` 優先使用 `python\python.exe`，找不到時退回系統 Python
+  - [x] 確認 `python/` 是否納入版控或另行發布（`.gitignore` 設定）
 - [ ] 0.2 環境檢查（可選）
   - [ ] 檢查 Python 與必要套件可正常匯入
   - [ ] 檢查設定檔是否存在、Redmine 金鑰是否已填寫
-  - [ ] 檢查 Redmine 網址可連線
-  - [ ] 檢查 `output/`、`history/` 等資料夾存在，不存在則自動建立
-  - [ ] 檢查 Claude Code 是否安裝並已登入，未安裝時提示「AI 功能將略過」
-  - [ ] 檢查進度 Excel 是否被開啟鎖住
+  - [x] 檢查 Claude Code 是否安裝並已登入，未安裝或未登入時停用 AI 項目
   - [ ] 任一必要項目失敗時顯示中文說明並中止
 
 #### 1. 欄位約定與 AI 規則
